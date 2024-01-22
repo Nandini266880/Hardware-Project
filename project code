@@ -47,3 +47,63 @@ void loop()
   }
   val = oldval;
 }
+
+
+
+Understanding in simple modules:-
+
+1) #include <SoftwareSerial.h> and #include <LiquidCrystal_I2C.h>: These lines include libraries that provide functions for software-based serial communication and driving LCD displays over I2C.
+
+2) LiquidCrystal_I2C lcd(0x27,20,3);: This line initializes an object named lcd for the LCD display, specifying its I2C address (0x27), number of columns (20), and rows (3).
+
+3) SoftwareSerial mySerial(0,1);: Creates a software serial object named mySerial for communication using pins 0 and 1 (RX and TX).
+
+4) String val = "No Data";: Declares a string variable val and initializes it with the text "No Data".
+
+5) String oldval;: Declares an empty string variable named oldval.
+
+6) String newval = "No Data";: Declares a string variable newval and initializes it with the text "No Data".
+
+7) int i = 0;: Declares an integer variable i and initializes it to 0.
+
+8) void setup(): Beginning of the setup function.
+
+9) lcd.init();: Initializes the LCD display.
+
+10) lcd.begin(16,2);: Sets up the LCD to use 16 columns and 2 rows.
+
+11) mySerial.begin(9600); and Serial.begin(9600);: Initializes serial communication for both the software serial (mySerial) and the hardware serial (Serial) at a baud rate of 9600.
+
+12) lcd.setCursor(0, 0);: Sets the cursor position on the LCD to the first column of the first row.
+
+14) lcd.print("Wireless Notice");: Prints "Wireless Notice" on the LCD.
+
+15) delay(3000);: Pauses the program for 3000 milliseconds (3 seconds).
+
+16) lcd.clear();: Clears the LCD display.
+
+17) lcd.print("Welcome!");: Prints "Welcome!" on the LCD.
+
+18) void loop(): Beginning of the loop function.
+
+19) val = mySerial.readString();: Reads data from the software serial communication and stores it in the variable val.
+
+20) val.trim();: Removes any leading or trailing whitespaces from the string val.
+
+21) Serial.println(val);: Prints the value of val to the serial monitor.
+
+22) if(val != oldval): Checks if the current value of val is different from the previous value stored in oldval.
+
+23) newval = val;: If the values are different, updates newval with the current value of val.
+
+24) lcd.clear();: Clears the LCD display.
+
+25) lcd.setCursor(i, 0);: Sets the cursor position on the LCD to the current value of i in the first row.
+
+26) lcd.print(newval);: Prints the updated value (newval) on the LCD.
+
+27) i++;: Increments the value of i.
+
+28) if(i >= 15) { i = 0; }: If i becomes greater than or equal to 15, reset it to 0.
+
+29) val = oldval;: Updates the val with the previous value stored in oldval.
